@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@layout/border"
+    android:elevation="3dp"
+    android:padding="10dp"
+    android:layout_marginBottom="20dp">
+
+    <ImageView
+        android:id="@+id/gambarpopular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/judulgamepopular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gambar"
+        android:text="Rise of The TOMB RAIDER"
+        android:layout_marginBottom="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/judulgame"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="3dp">
+
+            <TextView
+                android:id="@+id/tanggalgame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:text="23-10-2018" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingangka"
+                android:text="9.9"/>
+
+            <RatingBar
+                android:id="@+id/ratinggame"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="1"
+                android:progressTint="@color/colorPrimaryDark"
+
+                android:stepSize="0.1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/hargagame"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Harga"
+                android:layout_gravity="left"/>
+
+            <Button
+                android:id="@+id/addgame"
+                android:layout_width="35dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tanggal"
+                android:layout_gravity="center_vertical"
+                android:background="#28a745"
+                android:text="add"
+                android:textColor="#ffffff"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

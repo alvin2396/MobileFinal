@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.UpdateSpecification"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UPDATE SPECIFICATION"
+        android:textAlignment="center"
+        android:layout_marginBottom="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Processor" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:layout_marginRight="5dp"/>
+        <Spinner
+            android:id="@+id/processor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2ecc71"
+            android:entries="@array/processorlist"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Memory" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:layout_marginRight="5dp"/>
+        <Spinner
+            android:id="@+id/memory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2ecc71"
+            android:entries="@array/memorylist"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Graphics" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:layout_marginRight="5dp"/>
+        <Spinner
+            android:id="@+id/graphics"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2ecc71"
+            android:entries="@array/graphicslist"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tanggal"
+        android:layout_gravity="center_vertical"
+        android:background="#28a745"
+        android:text="Save"
+        android:textSize="12dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

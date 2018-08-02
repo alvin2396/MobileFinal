@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    tools:context=".Activity.Profile">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profile"
+                android:layout_marginBottom="10dp"
+                android:background="@layout/border"
+                android:elevation="3dp"
+                android:padding="10dp">
+                <ImageView
+                    android:id="@+id/user"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/user"
+                    android:layout_alignParentTop="true" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/updatefoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="#28a745"
+                        android:text="CHANGE PHOTO"
+                        android:textColor="#ffffff"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="19dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/user"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Nama"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/namauser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem Ipsum"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Alamat"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/alamatuser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem Ipsum"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/emailuser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem Ipsum"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/preference"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/profile"
+                android:background="@layout/border"
+                android:elevation="3dp"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Preference"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/pref1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text=""
+                        android:textSize="20dp" />
+
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/updateprofile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#28a745"
+                    android:text="Update Profile"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/specification"
+                android:orientation="vertical"
+                android:layout_below="@id/preference"
+                android:background="@layout/border"
+                android:elevation="3dp"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:id="@+id/specjudul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="My Specification"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/specjudul"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Processor"
+                        android:textSize="16dp"/>
+                    <TextView
+                        android:id="@+id/processorspec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="Lorem"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/specjudul"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Memory"
+                        android:textSize="16dp"/>
+                    <TextView
+                        android:id="@+id/memoryspec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="Lorem"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/specjudul"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Graphics"
+                        android:textSize="16dp"/>
+                    <TextView
+                        android:id="@+id/graphicsspec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="Lorem"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/updatespecification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#28a745"
+                    android:text="Update Specification"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/wallet"
+                android:orientation="vertical"
+                android:layout_below="@id/specification"
+                android:background="@layout/border"
+                android:elevation="3dp"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/walletjudul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gambar"
+                    android:text="Wallet Balance"
+                    android:layout_marginBottom="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/walletjudul">
+
+                    <TextView
+                        android:id="@+id/saldo"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="Rp. 0"
+                        android:layout_gravity="left"/>
+
+                    <Button
+                        android:id="@+id/topup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="#28a745"
+                        android:text="top up"
+                        android:textColor="#ffffff"
+                        android:textSize="12dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
