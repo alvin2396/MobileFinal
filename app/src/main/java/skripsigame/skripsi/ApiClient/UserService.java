@@ -11,6 +11,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import skripsigame.skripsi.Model.Processor;
 import skripsigame.skripsi.Model.Ram;
+import skripsigame.skripsi.Model.Transaksi;
 import skripsigame.skripsi.Model.User;
 import skripsigame.skripsi.Model.UserGenre;
 import skripsigame.skripsi.Model.Vga;
@@ -47,4 +48,24 @@ public interface UserService {
                       @Field("alamat") String alamat,
                       @Field("genre") ArrayList<String> genre
     );
+
+    @POST("user/updatespekMobile/")
+    @FormUrlEncoded
+    Call<Void> updatespek(@Header("Authorization") String authToken,
+                      @Field("id") String id,
+                      @Field("processor_id") String processor_id,
+                      @Field("vga_id") String vga_id,
+                      @Field("ram_id") String ram_id
+    );
+
+    @POST("user/topupcreateMobile/")
+    @FormUrlEncoded
+    Call<Transaksi> topupcreateMobile(@Header("Authorization") String authToken,
+                                      @Field("user_id") String id,
+                                      @Field("total") String total,
+                                      @Field("status") String status,
+                                      @Field("confirmation_code") String confirmation_code,
+                                      @Field("typetransaction") String typetransaction
+    );
+
 }

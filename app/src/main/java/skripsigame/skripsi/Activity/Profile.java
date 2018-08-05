@@ -28,7 +28,7 @@ import skripsigame.skripsi.Model.Vga;
 import skripsigame.skripsi.R;
 
 public class Profile extends AppCompatActivity {
-    Button btnchangephoto,btnupdateprofil,btnupdatespek;
+    Button btnchangephoto,btnupdateprofil,btnupdatespek,btntopup;
     String nama,emails,alamat,processor,vga,ram,id,saldo,genreuser;
     List<UserGenre> listgenre = new ArrayList<>();
     ImageView photoprofil;
@@ -61,6 +61,7 @@ public class Profile extends AppCompatActivity {
         final String email = intentprofil.getStringExtra("email");
         btnchangephoto = (Button)findViewById(R.id.updatefoto);
         btnupdateprofil = (Button)findViewById(R.id.updateprofile);
+        btntopup = (Button)findViewById(R.id.topup);
 
         btnupdatespek = (Button)findViewById(R.id.updatespecification);
 
@@ -128,6 +129,23 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, UpdateSpecification.class);
+                intent.putExtra("token", token);
+                intent.putExtra("email", email);
+                intent.putExtra("id", id);
+                intent.putExtra("processor", txtproc.getText().toString());
+                intent.putExtra("ram", ram.toString());
+                intent.putExtra("vga", txtvga.getText().toString());
+                startActivity(intent);
+            }
+        });
+
+        btntopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, TopUpActivity.class);
+                intent.putExtra("token",token);
+                intent.putExtra("email", email);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

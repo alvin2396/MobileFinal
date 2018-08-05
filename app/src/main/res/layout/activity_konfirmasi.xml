@@ -41,12 +41,13 @@
                     android:layout_height="wrap_content"
                     android:text=" : "
                     android:layout_gravity="left"/>
+
                 <TextView
-                    android:id="@+id/orderid"
+                    android:id="@+id/transaksi_id_topup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="123456"
-                    android:layout_gravity="left"/>
+                    android:layout_gravity="left"
+                    android:text="123456" />
             </LinearLayout>
 
             <LinearLayout
@@ -64,12 +65,13 @@
                     android:layout_height="wrap_content"
                     android:text=" : "
                     android:layout_gravity="left"/>
+
                 <TextView
-                    android:id="@+id/tipe"
+                    android:id="@+id/tipe_transaksi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Top Up"
-                    android:layout_gravity="left"/>
+                    android:layout_gravity="left"
+                    android:text="Top Up" />
             </LinearLayout>
 
             <LinearLayout
@@ -92,12 +94,13 @@
                     android:layout_height="wrap_content"
                     android:text="Rp. "
                     android:layout_gravity="left"/>
+
                 <TextView
-                    android:id="@+id/total"
+                    android:id="@+id/total_transaksi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="9.999.999"
-                    android:layout_gravity="left"/>
+                    android:layout_gravity="left"
+                    android:text="9.999.999" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,31 +123,32 @@
                     android:layout_height="wrap_content"
                     android:text=" : "
                     android:layout_gravity="left"/>
+
                 <TextView
-                    android:id="@+id/code"
+                    android:id="@+id/confirmation_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="xxxx-xxxx-xxxx"
-                    android:layout_gravity="left"/>
+                    android:layout_gravity="left"
+                    android:text="xxxx-xxxx-xxxx" />
             </LinearLayout>
 
             <EditText
-                android:id="@+id/entercode"
+                android:id="@+id/confirmcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Code Here"/>
+                android:hint="Enter Code Here" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnconfirmtopup"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_below="@+id/tanggal"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:background="#28a745"
                 android:text="Confirm"
-                android:textSize="12dp"
                 android:textColor="#ffffff"
-                android:layout_marginTop="10dp"/>
+                android:textSize="12dp" />
 
         </LinearLayout>
 

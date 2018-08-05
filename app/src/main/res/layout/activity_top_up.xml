@@ -161,26 +161,21 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <RadioButton
+                    android:id="@+id/radiobank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/credit"
-                    android:text="Credit Card / Debit Card"/>
+                    android:text="Bank Transfer" />
+
                 <RadioButton
+                    android:id="@+id/radiopaypal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/credit"
-                    android:text="Credit Card / Debit Card"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/credit"
-                    android:text="Credit Card / Debit Card"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/credit"
-                    android:text="Credit Card / Debit Card"/>
+                    android:text="Paypal" />
+
             </RadioGroup>
 
             <LinearLayout
@@ -189,16 +184,8 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/wallet"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Rp. 9.999.999,-"
-                    android:layout_gravity="left"/>
-
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/confirmtopup"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@+id/tanggal"
@@ -206,7 +193,7 @@
                     android:background="#28a745"
                     android:text="top up"
                     android:textColor="#ffffff"
-                    android:textSize="12dp"/>
+                    android:textSize="12dp" />
             </LinearLayout>
 
         </LinearLayout>
