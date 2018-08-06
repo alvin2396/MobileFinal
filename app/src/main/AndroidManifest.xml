@@ -26,6 +26,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Activity.Register"
@@ -41,7 +42,9 @@
         <activity android:name=".Activity.Cart" />
         <activity android:name=".Activity.PopularActivity" />
         <activity android:name=".Activity.TopUpActivity"></activity>
-        <activity android:name=".Activity.AddReviewActivity" />
+        <activity android:name=".Activity.AddReviewActivity">
+
+        </activity>
         <activity android:name=".Activity.KonfirmasiActivity"></activity>
         <activity
             android:name=".Activity.Home"

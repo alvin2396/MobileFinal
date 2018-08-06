@@ -31,4 +31,10 @@ public interface GameService {
                               @Field("email") String email,
                               @Field("page_number") int page_number,
                               @Field("item_count") int item_count);
+
+    @POST("games/detailGameMobile")
+    @FormUrlEncoded
+    Call<Games> detailgame(@Header("Authorization") String authToken,
+                              @Field("email") String email);
+
 }

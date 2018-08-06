@@ -6,11 +6,15 @@
     android:layout_height="wrap_content"
     tools:context=".Activity.TopUpActivity"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@mipmap/background">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TOP UP BALANCE"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:textColor="#ffffff"
         android:textAlignment="center"
         android:layout_marginBottom="10dp"/>
     <LinearLayout

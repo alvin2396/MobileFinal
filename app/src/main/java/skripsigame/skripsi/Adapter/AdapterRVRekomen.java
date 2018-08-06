@@ -1,5 +1,6 @@
 package skripsigame.skripsi.Adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
+import skripsigame.skripsi.Activity.GameDetail;
 import skripsigame.skripsi.Model.Games;
 import skripsigame.skripsi.R;
 
@@ -30,13 +32,27 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
     }
     @Override
     public void onBindViewHolder(final AdapterRVRekomen.ViewHolder holder, int position) {
+
         final Games populerItem = this.Gamesrekomen.get(position);
         holder.tvjudulgamenew.setText(populerItem.getGame_name());
         final String populerPhhoto = populerItem.getPhoto_url();
+        final  String idgame = populerItem.getId();
         holder.tvreleasedatenew.setText(populerItem.getRelease_date());
         holder.tvharganew.setText(populerItem.getHarga());
         holder.ratingnew.setText(populerItem.getRating());
         imageLoader.displayImage(populerPhhoto, holder.newImageview);
+        holder.newImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intentdetail = new Intent(view.getContext(), GameDetail.class);
+                intentdetail.putExtra("id",idgame );
+                intentdetail.putExtra("games", populerItem);
+                view.getContext().startActivity(intentdetail);
+
+
+            }
+        });
 
     }
     @Override
@@ -47,6 +63,7 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView tvjudulgamenew, tvharganew,tvreleasedatenew,ratingnew;
         ImageView newImageview;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -68,6 +85,11 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
         }
         notifyDataSetChanged();
     }
+
+    public void initdata(){
+
+    }
+
 
 
 }

@@ -1,5 +1,7 @@
 package skripsigame.skripsi.Activity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
@@ -110,6 +112,28 @@ public class GameDetail extends AppCompatActivity {
         adapter = new ReviewAdapter(dataSet);
         rvView.setAdapter(adapter);
 
+    }
+
+    private void initcomponent(){
+        final ProgressDialog progressDialog = new ProgressDialog(GameDetail.this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
+        Thread thread = new Thread(){
+            @Override
+            public void run(){
+                try {
+                    sleep(5000);
+                    progressDialog.dismiss();
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+        final Intent intent = getIntent();
+        final String token = intent.getStringExtra("token");
+        final String id = intent.getStringExtra("id");
     }
 
     private void initDataset(){

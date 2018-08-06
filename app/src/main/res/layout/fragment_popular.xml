@@ -6,7 +6,9 @@
     android:background="@mipmap/background"
     tools:context=".Fragment.Popular">
     <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
         android:id="@+id/rviewPopular"
         android:layout_height="match_parent"/>
 </FrameLayout>

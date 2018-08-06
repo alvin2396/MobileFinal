@@ -2,6 +2,7 @@ package skripsigame.skripsi.Fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +23,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import skripsigame.skripsi.Activity.GameDetail;
 import skripsigame.skripsi.Adapter.AdapterRVNew;
 import skripsigame.skripsi.Adapter.AdapterRVPopular;
 import skripsigame.skripsi.Adapter.AdapterRVRekomen;
@@ -75,7 +77,10 @@ public class Rekomendasi extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
         AmbilDataRec();
+
         return _view;
+
+
     }
 
 
