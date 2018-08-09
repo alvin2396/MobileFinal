@@ -15,7 +15,7 @@
             android:orientation="vertical"
             android:layout_margin="20dp">
             <TextView
-                android:id="@+id/judulgame"
+                android:id="@+id/judulgamedetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="judul"
@@ -27,14 +27,19 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="10dp">
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp."
+                    android:textColor="#ffffff"/>
+                <TextView
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 1.000.000,-"
+                    android:text="0"
                     android:textColor="#ffffff"/>
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/addtocart"
                     android:layout_width="35dp"
                     android:layout_height="20dp"
                     android:layout_below="@+id/tanggal"
@@ -47,7 +52,7 @@
             </LinearLayout>
 
             <VideoView
-                android:id="@+id/videoView"
+                android:id="@+id/videodetail"
                 android:layout_width="wrap_content"
                 android:layout_height="240dp"
                 android:layout_gravity="center"/>
@@ -85,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+                    android:text="description"/>
             </LinearLayout>
 
             <LinearLayout
@@ -132,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:text=" : "/>
                     <TextView
-                        android:id="@+id/year"
+                        android:id="@+id/detail_releasedate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lorem"
@@ -151,7 +156,7 @@
                         android:layout_height="wrap_content"
                         android:text=" : "/>
                     <TextView
-                        android:id="@+id/genre"
+                        android:id="@+id/detailgenre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lorem"
@@ -169,8 +174,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" : "/>
+                    <TextView
+                        android:id="@+id/detail_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 9.0 "/>
                     <RatingBar
-                        android:id="@+id/rating"
+                        android:id="@+id/ratingstar"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -195,7 +205,7 @@
                         android:id="@+id/playable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lorem"
+                        android:text="Playable"
                         android:layout_marginLeft="2dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -224,12 +234,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" : "/>
+
                     <TextView
                         android:id="@+id/ratinggameplay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8.8"
-                        android:layout_marginLeft="2dp"/>
+                        android:layout_marginLeft="2dp"
+                        android:text="8.8" />
                     <RatingBar
                         android:id="@+id/gameplay"
                         style="?android:attr/ratingBarStyleSmall"

@@ -68,4 +68,12 @@ public interface UserService {
                                       @Field("typetransaction") String typetransaction
     );
 
+    @POST("user/validatecodemobile/")
+    @FormUrlEncoded
+    Call<Transaksi> validatecode(@Header("Authorization") String authToken,
+                                      @Field("email") String email,
+                                      @Field("transaksi_id") String transaksi_id,
+                                      @Field("confirmation_code") String confirmation_code
+    );
+
 }

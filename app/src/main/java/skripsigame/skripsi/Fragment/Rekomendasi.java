@@ -32,14 +32,7 @@ import skripsigame.skripsi.ApiClient.GameService;
 import skripsigame.skripsi.Model.Games;
 import skripsigame.skripsi.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Rekomendasi.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Rekomendasi#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Rekomendasi extends Fragment {
     List<Games> games;
     AdapterRVRekomen adapterRVRekomen;
@@ -101,18 +94,37 @@ public class Rekomendasi extends Fragment {
                 gamesModel= new Games();
                 for (int i =0 ;i<dataGame.size();i++){
                     gamesModel = new Games();
+                    final String id = dataGame.get(i).getId();
                     final String rating = dataGame.get(i).getRating();
                     final String release_date = dataGame.get(i).getRelease_date();
                     final String name = dataGame.get(i).getGame_name();
                     final String photo_url = dataGame.get(i).getPhoto_url();
                     final String harga = dataGame.get(i).getHarga();
+                    final String screenshot1 = dataGame.get(i).getScreenshot1_url();
+                    final String screenshot2 = dataGame.get(i).getScreenshot2_url();
+                    final String screenshot3 = dataGame.get(i).getScreenshot3_url();
+                    final String publisher = dataGame.get(i).getPublisher();
+                    final String video_url = dataGame.get(i).getVideo_url();
+                    final String OS = dataGame.get(i).getOS();
+                    final String HDD = dataGame.get(i).getHDD_space();
+                    final String description = dataGame.get(i).getDescription();
 
 //                    final String image = "http://10.0.2.2:1337/images/user/"+dataGame.get(i).getPhoto_url();
                     gamesModel.setGame_name(name);
+                    gamesModel.setId(id);
+                    gamesModel.setEmail(email);
                     gamesModel.setPhoto_url(photo_url);
                     gamesModel.setHarga(harga);
                     gamesModel.setRelease_date(release_date);
                     gamesModel.setRating(rating);
+                    gamesModel.setScreenshot1_url(screenshot1);
+                    gamesModel.setScreenshot2_url(screenshot2);
+                    gamesModel.setScreenshot3_url(screenshot3);
+                    gamesModel.setPublisher(publisher);
+                    gamesModel.setVideo_url(video_url);
+                    gamesModel.setOS(OS);
+                    gamesModel.setHDD_space(HDD);
+                    gamesModel.setDescription(description);
 
 //                    gamesModel.setPhoto_url(image);
                     games.add(gamesModel);
@@ -181,20 +193,41 @@ public class Rekomendasi extends Fragment {
                     final List<Games> loadagain = response.body();
                     for (int i =0 ;i<loadagain.size();i++){
                         gamesModel = new Games();
+                        final String emails = loadagain.get(i).getEmail();
+                        final String idgame = loadagain.get(i).getId();
                         final String name = loadagain.get(i).getGame_name();
                         final String hargagame = loadagain.get(i).getHarga();
                         final String release_date = loadagain.get(i).getRelease_date();
                         final String rating = loadagain.get(i).getRating();
                         final String photo_url = loadagain.get(i).getPhoto_url();
                         final String image = loadagain.get(i).getPhoto_url();
+                        final String screenshot1 = loadagain.get(i).getScreenshot1_url();
+                        final String screenshot2 = loadagain.get(i).getScreenshot2_url();
+                        final String screenshot3 = loadagain.get(i).getScreenshot3_url();
+                        final String publisher = loadagain.get(i).getPublisher();
+                        final String video_url = loadagain.get(i).getVideo_url();
+                        final String OS = loadagain.get(i).getOS();
+                        final String HDD = loadagain.get(i).getHDD_space();
+                        final String description = loadagain.get(i).getDescription();
                         gamesModel.setPhoto_url(photo_url);
+                        gamesModel.setId(idgame);
+                        gamesModel.setEmail(email);
                         gamesModel.setGame_name(name);
                         gamesModel.setHarga(hargagame);
                         gamesModel.setRelease_date(release_date);
                         gamesModel.setRating(rating);
+                        gamesModel.setScreenshot1_url(screenshot1);
+                        gamesModel.setScreenshot2_url(screenshot2);
+                        gamesModel.setScreenshot3_url(screenshot3);
+                        gamesModel.setPublisher(publisher);
+                        gamesModel.setVideo_url(video_url);
+                        gamesModel.setOS(OS);
+                        gamesModel.setHDD_space(HDD);
+                        gamesModel.setDescription(description);
                         games.add(gamesModel);
                     }
                     adapterRVRekomen.AddItems(games);
+
                 }
                 else
                 {

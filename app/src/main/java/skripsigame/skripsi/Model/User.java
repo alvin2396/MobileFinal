@@ -70,6 +70,34 @@ public class User implements Serializable {
 //        this.genre = genre;
 //    }
 
+    private String procscore;
+    private String vgascore;
+    private String ramscore;
+
+    public String getProcscore() {
+        return procscore;
+    }
+
+    public void setProcscore(String procscore) {
+        this.procscore = procscore;
+    }
+
+    public String getVgascore() {
+        return vgascore;
+    }
+
+    public void setVgascore(String vgascore) {
+        this.vgascore = vgascore;
+    }
+
+    public String getRamscore() {
+        return ramscore;
+    }
+
+    public void setRamscore(String ramscore) {
+        this.ramscore = ramscore;
+    }
+
     public String getToken() {
         return token;
     }

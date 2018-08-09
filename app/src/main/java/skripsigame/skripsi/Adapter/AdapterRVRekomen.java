@@ -36,7 +36,7 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
         final Games populerItem = this.Gamesrekomen.get(position);
         holder.tvjudulgamenew.setText(populerItem.getGame_name());
         final String populerPhhoto = populerItem.getPhoto_url();
-        final  String idgame = populerItem.getId();
+        final String idgame = populerItem.getId();
         holder.tvreleasedatenew.setText(populerItem.getRelease_date());
         holder.tvharganew.setText(populerItem.getHarga());
         holder.ratingnew.setText(populerItem.getRating());
@@ -46,8 +46,10 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
             public void onClick(View view) {
 
                 Intent intentdetail = new Intent(view.getContext(), GameDetail.class);
-                intentdetail.putExtra("id",idgame );
+                intentdetail.putExtra("idgame",idgame );
                 intentdetail.putExtra("games", populerItem);
+                intentdetail.putExtra("token", populerItem.getToken());
+                intentdetail.putExtra("email", populerItem.getEmail());
                 view.getContext().startActivity(intentdetail);
 
 
