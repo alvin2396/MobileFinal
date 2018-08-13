@@ -18,6 +18,7 @@
                 android:id="@+id/judulgamedetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="judul"
                 android:textColor="#ffffff"/>
 
@@ -80,10 +81,12 @@
                 android:background="@layout/border"
                 android:elevation="3dp"
                 android:padding="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="Description"/>
                 <TextView
                     android:id="@+id/description"
@@ -104,6 +107,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="Game Detail"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -124,6 +128,12 @@
                         android:text="Lorem"
                         android:layout_marginLeft="2dp"/>
                 </LinearLayout>
+                <View android:layout_height="fill_parent"
+                    android:layout_width="1px"
+                    android:background="#90909090"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/separator2" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -178,16 +188,24 @@
                         android:id="@+id/detail_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
                         android:text=" 9.0 "/>
                     <RatingBar
-                        android:id="@+id/ratingstar"
-                        style="?android:attr/ratingBarStyleSmall"
+                        android:id="@+id/ratingbardetail"
+                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:progressTint="@color/colorPrimaryDark"
-                        android:stepSize="0.1"
-                        android:layout_marginLeft="2dp"/>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="1dp"
+                        android:clickable="false"
+                        android:isIndicator="true"
+                        android:max="5"
+                        android:rating="0"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:theme="@style/RatingBarRiview"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -221,6 +239,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="Feature Ratings"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -240,16 +259,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
                         android:text="8.8" />
                     <RatingBar
-                        android:id="@+id/gameplay"
-                        style="?android:attr/ratingBarStyleSmall"
+                        android:id="@+id/ratingbargameplay"
+                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:progressTint="@color/colorPrimaryDark"
-                        android:stepSize="0.1"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="1dp"
+                        android:clickable="false"
+                        android:isIndicator="true"
+                        android:max="5"
+                        android:rating="0"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:theme="@style/RatingBarRiview"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -268,16 +295,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8.8"
+                        android:layout_marginRight="5dp"
                         android:layout_marginLeft="2dp"/>
                     <RatingBar
-                        android:id="@+id/graphics"
-                        style="?android:attr/ratingBarStyleSmall"
+                        android:id="@+id/ratingbargraphic"
+                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:progressTint="@color/colorPrimaryDark"
-                        android:stepSize="0.1"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="1dp"
+                        android:clickable="false"
+                        android:isIndicator="true"
+                        android:max="5"
+                        android:rating="0"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:theme="@style/RatingBarRiview"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -296,16 +331,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8.8"
+                        android:layout_marginRight="5dp"
                         android:layout_marginLeft="2dp"/>
                     <RatingBar
-                        android:id="@+id/controls"
-                        style="?android:attr/ratingBarStyleSmall"
+                        android:id="@+id/ratingbarcontrols"
+                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:progressTint="@color/colorPrimaryDark"
-                        android:stepSize="0.1"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="1dp"
+                        android:clickable="false"
+                        android:isIndicator="true"
+                        android:max="5"
+                        android:rating="0"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:theme="@style/RatingBarRiview"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -324,16 +367,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8.8"
+                        android:layout_marginRight="5dp"
                         android:layout_marginLeft="2dp"/>
                     <RatingBar
-                        android:id="@+id/story"
-                        style="?android:attr/ratingBarStyleSmall"
+                        android:id="@+id/ratingbarstory"
+                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:progressTint="@color/colorPrimaryDark"
-                        android:stepSize="0.1"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="1dp"
+                        android:clickable="false"
+                        android:isIndicator="true"
+                        android:max="5"
+                        android:rating="0"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:theme="@style/RatingBarRiview"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -352,16 +403,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8.8"
+                        android:layout_marginRight="5dp"
                         android:layout_marginLeft="2dp"/>
                     <RatingBar
-                        android:id="@+id/music"
-                        style="?android:attr/ratingBarStyleSmall"
+                        android:id="@+id/ratingbarmusic"
+                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:progressTint="@color/colorPrimaryDark"
-                        android:stepSize="0.1"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="1dp"
+                        android:clickable="false"
+                        android:isIndicator="true"
+                        android:max="5"
+                        android:rating="0"
+                        android:scaleX=".9"
+                        android:scaleY=".9"
+                        android:theme="@style/RatingBarRiview"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -377,6 +436,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="System Requirement"
+                    android:textStyle="bold"
                     android:layout_marginBottom="10dp"/>
                 <TextView
                     android:layout_width="match_parent"

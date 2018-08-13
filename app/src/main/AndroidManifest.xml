@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -26,7 +26,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Activity.Register"
@@ -37,21 +36,19 @@
         <activity android:name=".Activity.GameDetail" />
         <activity android:name=".Activity.coba" />
         <activity android:name=".Activity.Profile" />
+        <activity android:name=".Activity.CartActivity" />
         <activity android:name=".Activity.UpdateProfile" />
         <activity android:name=".Activity.UpdateSpecification" />
-        <activity android:name=".Activity.Cart" />
         <activity android:name=".Activity.PopularActivity" />
-        <activity android:name=".Activity.TopUpActivity"></activity>
-        <activity android:name=".Activity.AddReviewActivity">
-
-        </activity>
-        <activity android:name=".Activity.KonfirmasiActivity"></activity>
+        <activity android:name=".Activity.TopUpActivity" />
+        <activity android:name=".Activity.AddReviewActivity" />
+        <activity android:name=".Activity.KonfirmasiActivity" />
         <activity
             android:name=".Activity.Home"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.ActivityCarts" />
+        <activity android:name=".Activity.OwngameActivity"></activity>
     </application>
 
 </manifest>

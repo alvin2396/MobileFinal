@@ -12,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -88,7 +90,7 @@ public class Profile extends AppCompatActivity {
                     txtalamat = (TextView)findViewById(R.id.alamatuser);
                     txtalamat.setText(alamat);
                     wallet = (TextView) findViewById(R.id.saldo);
-                    wallet.setText(saldo);
+                    wallet.setText(NumberFormat.getNumberInstance(Locale.ENGLISH).format(Integer.parseInt(saldo)));
 //                    txtproc = (TextView)findViewById(R.id.processorspec);
 //                    txtproc.setText(processor);
                 }

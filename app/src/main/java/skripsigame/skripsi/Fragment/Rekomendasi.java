@@ -29,6 +29,7 @@ import skripsigame.skripsi.Adapter.AdapterRVPopular;
 import skripsigame.skripsi.Adapter.AdapterRVRekomen;
 import skripsigame.skripsi.ApiClient.ApiClient;
 import skripsigame.skripsi.ApiClient.GameService;
+import skripsigame.skripsi.ApiClient.UserService;
 import skripsigame.skripsi.Model.Games;
 import skripsigame.skripsi.R;
 
@@ -42,10 +43,11 @@ public class Rekomendasi extends Fragment {
     ImageView gambarnew;
     LinearLayoutManager layoutManager;
 
+
     private int page_number =1;
-    private int item_count =5;
+    private int item_count =243;
     private int pasVisibleitem,Visibelitemcount,totalitemcount,previouseitemcount =0;
-    private int view_Tresholl =10;
+    private int view_Tresholl =243;
     private boolean isloading =true;
 
     public Rekomendasi() {
@@ -182,6 +184,7 @@ public class Rekomendasi extends Fragment {
         games= new ArrayList<>();
         final String tokens =getArguments().getString(  "tokens");
         final String email =getArguments().getString(  "email");
+        final UserService userService = ApiClient.getClient().create(UserService.class);
         GameService gameService = ApiClient.getClient().create(GameService.class);
         Call<List<Games>> call = gameService.rekomen("Bearer "+tokens,email,page_number,item_count);
         call.enqueue(new Callback<List<Games>>() {
@@ -193,6 +196,7 @@ public class Rekomendasi extends Fragment {
                     final List<Games> loadagain = response.body();
                     for (int i =0 ;i<loadagain.size();i++){
                         gamesModel = new Games();
+
                         final String emails = loadagain.get(i).getEmail();
                         final String idgame = loadagain.get(i).getId();
                         final String name = loadagain.get(i).getGame_name();
@@ -225,6 +229,7 @@ public class Rekomendasi extends Fragment {
                         gamesModel.setHDD_space(HDD);
                         gamesModel.setDescription(description);
                         games.add(gamesModel);
+
                     }
                     adapterRVRekomen.AddItems(games);
 

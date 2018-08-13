@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:layout_marginBottom="2dp">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@layout/border"
-        android:elevation="3dp"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp">
+
         <ImageView
-            android:id="@+id/user"
+            android:id="@+id/cartimage"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:src="@mipmap/gambar"
@@ -23,7 +18,7 @@
             android:layout_toRightOf="@id/user"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/judulgame"
+                android:id="@+id/cartjudulgame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Judul Game"/>
@@ -34,18 +29,23 @@
                 android:layout_marginBottom="3dp">
 
                 <TextView
-                    android:id="@+id/harga"
+                    android:id="@+id/cartharga"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Rp. 9.999.999,-"
                     android:layout_gravity="left"/>
-                <ImageView
+
+                <Button
+                    android:id="@+id/deletecart"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/delete"/>
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/tanggal"
+                    android:background="#28a745"
+                    android:text="Delete"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>

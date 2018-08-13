@@ -11,15 +11,15 @@
             android:id="@+id/nav_profil"
             android:title="Profil"/>
         <item
-            android:id="@+id/nav_new_game"
-            android:title="New Game"/>
+            android:id="@+id/nav_owngame"
+            android:title="Own Game"/>
         <item
-            android:id="@+id/nav_on_sale"
-            android:title="On Sale"/>
-        <item
-            android:id="@+id/cart"
+            android:id="@+id/nav_cart"
             android:icon="@drawable/cart"
             android:title="Cart"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Logout"/>
     </group>
 
 </menu>

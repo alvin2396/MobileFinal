@@ -9,6 +9,8 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import skripsigame.skripsi.Model.Cart;
+import skripsigame.skripsi.Model.Owngame;
 import skripsigame.skripsi.Model.Processor;
 import skripsigame.skripsi.Model.Ram;
 import skripsigame.skripsi.Model.Transaksi;
@@ -75,5 +77,44 @@ public interface UserService {
                                       @Field("transaksi_id") String transaksi_id,
                                       @Field("confirmation_code") String confirmation_code
     );
+
+    @POST("owngame/getowngamemobile/")
+    @FormUrlEncoded
+    Call<List<Owngame>> getowngame(@Header("Authorization") String authToken,
+                               @Field("email") String email);
+
+    @POST("cart/getCartmobile/")
+    @FormUrlEncoded
+    Call<List<Cart>> getcart (@Header("Authorization") String authToken,
+                              @Field("email") String email);
+
+    @POST("cart/addcartmobile/")
+    @FormUrlEncoded
+    Call<Void> addcart (@Header("Authorization") String authToken,
+                              @Field("user_id") String user_id,
+                              @Field("nama_game") String nama_game,
+                                @Field("id_game") String id_game,
+                                @Field("harga") String harga,
+                                @Field("photo_url") String photo_url
+                        );
+
+    @POST("cart/removecartmobile/")
+    @FormUrlEncoded
+    Call<Void> removecart (@Header("Authorization") String authToken,
+                              @Field("id") String id);
+
+    @POST("cart/checkcartmobile/")
+    @FormUrlEncoded
+    Call<Void> checkcart (@Header("Authorization") String authToken,
+                           @Field("email") String email,
+                           @Field("id_game") String id_game);
+
+    @POST("cart/checkowngamemobile/")
+    @FormUrlEncoded
+    Call<Void> checkowngame (@Header("Authorization") String authToken,
+                          @Field("user_id") String user_id,
+                          @Field("game_id") String game_id);
+
+
 
 }

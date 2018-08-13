@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".Activity.ActivityCarts">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:text="Wallet Balance"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/walletcart"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Rp. 9.999.999,-"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="left"/>
+
+        <Button
+            android:id="@+id/topupcart"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tanggal"
+            android:layout_gravity="center_vertical"
+            android:background="#28a745"
+            android:text="top up"
+            android:textColor="#ffffff"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/rviewcart"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Order Total : "
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="left"/>
+
+        <TextView
+            android:id="@+id/totalhargacart"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Rp. 9.999.999,-"/>
+
+        <Button
+            android:id="@+id/submitcart"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tanggal"
+            android:layout_gravity="center_vertical"
+            android:background="#28a745"
+            android:text="submit"
+            android:textColor="#ffffff"
+            android:layout_marginRight="10dp"
+            android:textSize="12dp"/>
+    </LinearLayout>
+</LinearLayout>

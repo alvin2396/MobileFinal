@@ -13,6 +13,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="RatingBarRiview" parent="Theme.AppCompat">
+        <item name="colorControlActivated">#FFFF00</item>
+        <item name="colorControlNormal">#808080</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlActivated">#FFFF00</item>
+    </style>
+
     <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorControlNormal">#151515</item>
     </style>
@@ -20,5 +29,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="background">
+        <item name="android:colorBackground">#ffffff</item>
+    </style>
 </resources>

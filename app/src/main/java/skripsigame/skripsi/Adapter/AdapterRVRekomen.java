@@ -1,24 +1,41 @@
 package skripsigame.skripsi.Adapter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import skripsigame.skripsi.Activity.ActivityCarts;
 import skripsigame.skripsi.Activity.GameDetail;
+import skripsigame.skripsi.ApiClient.ApiClient;
+import skripsigame.skripsi.ApiClient.UserService;
+import skripsigame.skripsi.Model.Cart;
 import skripsigame.skripsi.Model.Games;
+import skripsigame.skripsi.Model.Owngame;
+import skripsigame.skripsi.Model.User;
 import skripsigame.skripsi.R;
 
 public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.ViewHolder> {
     List<Games> Gamesrekomen;
     ImageLoader imageLoader;
+    Context mcontext;
 
     public AdapterRVRekomen(List<Games> Gamesrekomen, ImageLoader imageLoader) {
         this.Gamesrekomen = Gamesrekomen;
@@ -38,9 +55,23 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
         final String populerPhhoto = populerItem.getPhoto_url();
         final String idgame = populerItem.getId();
         holder.tvreleasedatenew.setText(populerItem.getRelease_date());
-        holder.tvharganew.setText(populerItem.getHarga());
+        final String currency = NumberFormat.getNumberInstance(Locale.ENGLISH).format(Integer.parseInt(populerItem.getHarga()));
+        holder.tvharganew.setText(currency);
         holder.ratingnew.setText(populerItem.getRating());
         imageLoader.displayImage(populerPhhoto, holder.newImageview);
+        float rating2 = Float.parseFloat(populerItem.getRating());
+        rating2 = rating2/2;
+        holder.ratingBar.setRating(rating2);
+
+
+
+
+        final UserService userService = ApiClient.getClient().create(UserService.class);
+
+
+
+
+
         holder.newImageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +87,78 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
             }
         });
 
+        holder.btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                final Call<User> userCall = userService.find("Bearer"+populerItem.getToken(),populerItem.getEmail());
+                userCall.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if(response.isSuccessful()){
+                            User user = response.body();
+                            final String user_id = user.getId();
+                            Call checkcart = userService.checkcart("Bearer"+populerItem.getToken(),populerItem.getEmail(),populerItem.getId());
+                            checkcart.enqueue(new Callback() {
+                                @Override
+                                public void onResponse(Call call, Response response) {
+                                    if(response.code() == 204){
+                                        Call checkown = userService.checkowngame("Bearer"+populerItem.getToken(),user_id,populerItem.getId());
+                                        checkown.enqueue(new Callback() {
+                                            @Override
+                                            public void onResponse(Call call, Response response) {
+                                                if(response.code() == 204){
+                                                    Call addcart = userService.addcart("Bearer"+populerItem.getToken(),user_id,populerItem.getGame_name(),populerItem.getId(),populerItem.getHarga(),populerItem.getPhoto_url());
+                                                    addcart.enqueue(new Callback() {
+                                                        @Override
+                                                        public void onResponse(Call call, Response response) {
+                                                            if(response.isSuccessful()){
+                                                                Intent intent = new Intent(view.getContext(),ActivityCarts.class);
+                                                                intent.putExtra("email",populerItem.getEmail());
+                                                                intent.putExtra("token",populerItem.getToken());
+                                                                view.getContext().startActivity(intent);
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onFailure(Call call, Throwable t) {
+                                                            Toast.makeText(view.getContext(), "Fail to add item", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                }
+                                                else {
+                                                    Toast.makeText(view.getContext(), "item already owned", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call call, Throwable t) {
+
+                                            }
+                                        });
+                                    }
+                                    else if(response.isSuccessful()){
+                                        Toast.makeText(view.getContext(), "Item already added", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call call, Throwable t) {
+                                    Toast.makeText(view.getContext(), "Fail to check cart", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(view.getContext(), "Fail to Load User Data", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
     }
     @Override
     public int getItemCount() {
@@ -65,6 +168,8 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView tvjudulgamenew, tvharganew,tvreleasedatenew,ratingnew;
         ImageView newImageview;
+        RatingBar ratingBar;
+        Button btnadd;
 
 
         public ViewHolder(View itemView) {
@@ -74,9 +179,30 @@ public class AdapterRVRekomen extends RecyclerView.Adapter<AdapterRVRekomen.View
             tvharganew = (TextView)itemView.findViewById(R.id.hargagamerecom);
             tvreleasedatenew = (TextView)itemView.findViewById(R.id.tanggalgamerecom);
             ratingnew = (TextView)itemView.findViewById(R.id.ratingangkarecom);
+            btnadd = (Button) itemView.findViewById(R.id.addgamerecom);
+            ratingBar = (RatingBar)itemView.findViewById(R.id.ratingbarrekomen);
+
 
 
         }
+    }
+
+    private void checkcart(String id_game, String token, String user_id){
+        final UserService userService = ApiClient.getClient().create(UserService.class);
+        Call checkcart = userService.checkcart("Bearer"+token,user_id,id_game);
+        checkcart.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                if(response.isSuccessful()){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
     }
 
     public void AddItems(List<Games> gamesPop)

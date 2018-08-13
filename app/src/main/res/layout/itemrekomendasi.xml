@@ -20,6 +20,7 @@
     <TextView
         android:id="@+id/judulgamerecom"
         android:layout_width="match_parent"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_below="@+id/gambarnew"
         android:text="Rise of The TOMB RAIDER"
@@ -48,18 +49,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ratingangkarecom"
+                android:layout_marginRight="5dp"
                 android:text="9.9"/>
 
             <RatingBar
-                android:id="@+id/ratinggamerecom"
-                style="?android:attr/ratingBarStyleSmall"
+                android:id="@+id/ratingbarrekomen"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:numStars="1"
-                android:padding="2dp"
-                android:progressTint="@color/colorPrimaryDark"
-
-                android:stepSize="0.1" />
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:clickable="false"
+                android:isIndicator="true"
+                android:max="5"
+                android:rating="0"
+                android:scaleX=".9"
+                android:scaleY=".9"
+                android:theme="@style/RatingBarRiview"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -77,11 +85,12 @@
 
             <Button
                 android:id="@+id/addgamerecom"
-                android:layout_width="35dp"
-                android:layout_height="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
                 android:layout_below="@+id/tanggal"
                 android:layout_gravity="center_vertical"
                 android:background="#28a745"
+
                 android:text="add"
                 android:textColor="#ffffff"
                 android:textSize="12dp"/>

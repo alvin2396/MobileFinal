@@ -94,10 +94,12 @@ public class Login2 extends AppCompatActivity {
                                     Intent intent = new Intent(Login2.this, Home.class);
                                     String token = response.body().getToken().toString();
                                     User users = response.body();
+
                                     String iduser = users.getId();
                                     intent.putExtra("token", token);
                                     intent.putExtra("email", email.toString());
                                     intent.putExtra("id_user", iduser);
+
                                     startActivity(intent);
                                     Toast.makeText(Login2.this, "Login Success", Toast.LENGTH_SHORT).show();
                                     finish();

@@ -32,7 +32,7 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    String token,email;
+    String token,email,wallet;
     Popular popFragr = new Popular();
     NewGame newGame = new NewGame();
     Rekomendasi rekomFrag = new Rekomendasi();
@@ -60,6 +60,7 @@ public class Home extends AppCompatActivity
         Intent ints = getIntent();
         token = ints.getStringExtra("token");
         email = ints.getStringExtra("email");
+        wallet = ints.getStringExtra("wallet");
         AntarDataKePopular();
         AntarDataKeNew();
         AntarDataKeRekomen();
@@ -105,6 +106,8 @@ public class Home extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent intent = new Intent(Home.this,Home.class);
+            intent.putExtra("token",token);
+            intent.putExtra("email",email);
             startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_profil) {
@@ -113,11 +116,12 @@ public class Home extends AppCompatActivity
             intent.putExtra("email", email);
             startActivity(intent);
 
-        } else if (id == R.id.nav_new_game) {
+        } else if (id == R.id.nav_cart) {
+            Intent intent = new Intent(Home.this,ActivityCarts.class);
+            intent.putExtra("token",token);
+            intent.putExtra("email",email);
 
-        } else if (id == R.id.nav_on_sale) {
-
-        } else if (id == R.id.cart) {
+            startActivity(intent);
 
         }
 

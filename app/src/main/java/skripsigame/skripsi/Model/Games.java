@@ -48,6 +48,26 @@ public class Games implements Serializable {
     @SerializedName("description")
     private String description;
 
+    private Boolean owned;
+
+    private Boolean added;
+
+    public Boolean getOwned() {
+        return owned;
+    }
+
+    public void setOwned(Boolean owned) {
+        this.owned = owned;
+    }
+
+    public Boolean getAdded() {
+        return added;
+    }
+
+    public void setAdded(Boolean added) {
+        this.added = added;
+    }
+
     public String getDescription() {
         return description;
     }

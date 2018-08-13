@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.MediaController;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -20,8 +21,10 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.w3c.dom.Text;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -49,14 +52,16 @@ public class GameDetail extends AppCompatActivity {
     private int position = 0;
     String gamegenre;
     String recproc,recvga,recram;
+    Boolean statusspek;
     private String userprocscore,userramscore,uservgascore;
-    private String processorreq;
+    private String processorreq,memoryreq,vgareq;
     private MediaController mediaController;
     ViewPager viewPager;
     TextView gameplay,graphic,music,story,controls,detailgenre;
     private RecyclerView rvView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    RatingBar rbdetail,rbgameplay,rbgraphic,rbstory,rbcontrols,rbmusic;
     private ArrayList<String> dataSet;
 
     @Override
@@ -98,7 +103,7 @@ public class GameDetail extends AppCompatActivity {
         initfeature();
         initdetailgenre();
         initminspek();
-        checkspek();
+        initrecspek();
 
     }
 
@@ -137,11 +142,15 @@ public class GameDetail extends AppCompatActivity {
                         TextView tvgamename = (TextView)findViewById(R.id.judulgamedetail);
                         tvgamename.setText(datadetail.getGame_name());
                         TextView tvharga = (TextView)findViewById(R.id.price);
-                        tvharga.setText(datadetail.getHarga());
+                        final String currency = NumberFormat.getNumberInstance(Locale.ENGLISH).format(Integer.parseInt(datadetail.getHarga()));
+                        tvharga.setText(currency);
                         TextView tvdeskripsi = (TextView)findViewById(R.id.description);
                         tvdeskripsi.setText(datadetail.getDescription());
                         TextView tvrating = (TextView)findViewById(R.id.detail_rating);
                         tvrating.setText(datadetail.getRating());
+                        float ratingdetail = Float.parseFloat(datadetail.getRating())/2;
+                        rbdetail = (RatingBar)findViewById(R.id.ratingbardetail);
+                        rbdetail.setRating(ratingdetail);
                         TextView releasedate = (TextView)findViewById(R.id.detail_releasedate);
                         releasedate.setText(datadetail.getRelease_date());
                         TextView publisher = (TextView)findViewById(R.id.publisher);
@@ -235,17 +244,27 @@ public class GameDetail extends AppCompatActivity {
                 try {
                     if(response.isSuccessful()){
                         Feature feature = response.body();
+                        rbgameplay = (RatingBar)findViewById(R.id.ratingbargameplay);
+                        rbcontrols = (RatingBar)findViewById(R.id.ratingbarcontrols);
+                        rbstory = (RatingBar)findViewById(R.id.ratingbarstory);
+                        rbgraphic = (RatingBar)findViewById(R.id.ratingbargraphic);
+                        rbmusic = (RatingBar)findViewById(R.id.ratingbarmusic);
                         gameplay = (TextView)findViewById(R.id.ratinggameplay);
                         gameplay.setText(feature.getGameplay());
                         gameplay.setMaxLines(4);
+                        rbgameplay.setRating(Float.parseFloat(feature.getGameplay())/2);
                         graphic = (TextView)findViewById(R.id.ratinggraphics);
                         graphic.setText(feature.getGraphic());
+                        rbgraphic.setRating(Float.parseFloat(feature.getGraphic())/2);
                         music = (TextView)findViewById(R.id.ratingmusic);
                         music.setText(feature.getMusic());
+                        rbmusic.setRating(Float.parseFloat(feature.getMusic())/2);
                         story = (TextView)findViewById(R.id.ratingstory);
                         story.setText(feature.getStory());
+                        rbstory.setRating(Float.parseFloat(feature.getStory())/2);
                         controls = (TextView)findViewById(R.id.ratingcontrols);
                         controls.setText(feature.getControls());
+                        rbcontrols.setRating(Float.parseFloat(feature.getStory())/2);
                     }
                     else {
                         Toast.makeText(GameDetail.this, "Response failed", Toast.LENGTH_SHORT).show();
@@ -297,6 +316,7 @@ public class GameDetail extends AppCompatActivity {
                                         if(response.isSuccessful()){
                                             Vga vga = response.body();
                                             TextView tvminvga = (TextView)findViewById(R.id.graphicsmin);
+                                            vgareq = vga.getVga_score();
                                             tvminvga.setText(vga.getVga_name());
                                             Call<Ram> ramCall = gameServices.getram("Bearer"+token, minram);
                                             ramCall.enqueue(new Callback<Ram>() {
@@ -304,6 +324,7 @@ public class GameDetail extends AppCompatActivity {
                                                 public void onResponse(Call<Ram> call, Response<Ram> response) {
                                                     if(response.isSuccessful()){
                                                         Ram ram = response.body();
+                                                        memoryreq = ram.getRam_score();
                                                         TextView tvminram = (TextView)findViewById(R.id.memorymin);
                                                         tvminram.setText(ram.getRam_size()+" GB");
                                                         checkspek();
@@ -362,8 +383,12 @@ public class GameDetail extends AppCompatActivity {
         final String token = intent.getStringExtra("token");
         final String game_id = intent.getStringExtra("idgame");
         final String email =intent.getStringExtra("email");
-        Toast.makeText(this, processorreq, Toast.LENGTH_SHORT).show();
         final UserService userService = ApiClient.getClient().create(UserService.class);
+        final String minimumproc = processorreq;
+        final String minimumvga = vgareq;
+        final String minimumram = memoryreq;
+        final TextView tvstatus = (TextView)findViewById(R.id.playable);
+
         Call<Processor> call = userService.findprocessor("Bearer"+token,email);
         call.enqueue(new Callback<Processor>() {
             @Override
@@ -378,10 +403,10 @@ public class GameDetail extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Ram> call, Response<Ram> response) {
                             if(response.isSuccessful()){
-                                Ram userram = response.body();
+                                final Ram userram = response.body();
                                 final String ramscore = userram.getRam_score();
                                 userramscore = ramscore;
-
+                                statusspek = true;
                                 Call<Vga> vgaCall = userService.findvga("Bearer"+token,email);
                                 vgaCall.enqueue(new Callback<Vga>() {
                                     @Override
@@ -390,7 +415,23 @@ public class GameDetail extends AppCompatActivity {
                                             Vga uservga = response.body();
                                             final String vgascore = uservga.getVga_score();
                                             uservgascore = vgascore;
-                                            checktoast();
+
+                                            if(Integer.parseInt(userramscore) < Integer.parseInt(minimumram)){
+                                                statusspek = false;
+                                            }
+                                            if( Integer.parseInt(userprocscore) < Integer.parseInt(minimumproc) ){
+                                                statusspek = false;
+                                            }
+                                            if(Integer.parseInt(uservgascore) < Integer.parseInt(minimumvga)){
+                                                statusspek = false;
+                                            }
+
+                                            if(statusspek){
+                                                tvstatus.setText("Playable");
+                                            }
+                                            else {
+                                                tvstatus.setText("Not Playable");
+                                            }
                                         }
                                         else {
                                             Toast.makeText(GameDetail.this, "Fail to load user vga", Toast.LENGTH_SHORT).show();
@@ -408,7 +449,7 @@ public class GameDetail extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Ram> call, Throwable t) {
-
+                            Toast.makeText(GameDetail.this, "Failed to load API RAM", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -427,31 +468,6 @@ public class GameDetail extends AppCompatActivity {
 
 
 
-    }
-
-    private void checktoast(){
-        final String check = userprocscore+" "+userramscore+" "+uservgascore;
-
-        boolean proc = true;
-        boolean ram = true;
-        boolean vga = true;
-
-        if(Integer.parseInt(userprocscore) < 500){
-            proc = false;
-        }
-        if(Integer.parseInt(userramscore) < 5){
-            ram = false;
-        }
-        if(Integer.parseInt(uservgascore) < 80){
-            vga = false;
-        }
-
-        if(proc && ram && vga){
-            Toast.makeText(this, "Playable", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "Not Playable", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void initrecspek(){
